@@ -36,6 +36,7 @@ portfolio-project/
 │
 └── README.md
 ```
+---
 
 ## ⚙️ Installation & Setup
 
