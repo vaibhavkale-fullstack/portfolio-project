@@ -12,7 +12,7 @@ A fullstack portfolio web application built using Angular and Node.js.
 ### Backend
 - Node.js
 - Express.js
-- MongoDB
+- MYSQL
 
 ---
 
