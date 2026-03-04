@@ -18,6 +18,7 @@ A fullstack portfolio web application built using Angular and Node.js.
 
 ## 📁 Project Structure
 
+```
 portfolio-project/
 │
 ├── frontend-app/        # Angular application
@@ -34,8 +35,7 @@ portfolio-project/
 │   └── server.js
 │
 └── README.md
-
----
+```
 
 ## ⚙️ Installation & Setup
 
