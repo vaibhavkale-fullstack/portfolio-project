@@ -1,0 +1,67 @@
+# 🚀 Portfolio Project (Fullstack)
+
+A fullstack portfolio web application built using Angular and Node.js.
+
+## 🛠️ Tech Stack
+
+### Frontend
+- Angular
+- TypeScript
+- Tailwind CSS
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+
+---
+
+## 📁 Project Structure
+
+portfolio-project/
+│
+├── frontend-app   → Angular application
+├── backend-node   → Node.js API
+│
+└── README.md
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+
+git clone https://github.com/vaibhavkale-fullstack/portfolio-project.git
+
+---
+
+### 2️⃣ Setup Backend
+
+cd backend-node  
+npm install  
+npm start  
+
+---
+
+### 3️⃣ Setup Frontend
+
+cd frontend-app  
+npm install  
+ng serve  
+
+---
+
+## ✨ Features
+
+- User authentication
+- Portfolio management
+- Project upload with images
+- Responsive UI
+- REST API integration
+
+---
+
+## 👨‍💻 Author
+
+Vaibhav Kale  
+Fullstack Developer (Angular + Node.js)
