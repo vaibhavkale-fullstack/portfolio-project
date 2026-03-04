@@ -77,6 +77,7 @@ ng serve
 Vaibhav Kale  
 Fullstack Developer (Angular + Node.js)
 
+---
 
 ## 📸 Screenshots
 
