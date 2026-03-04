@@ -20,8 +20,18 @@ A fullstack portfolio web application built using Angular and Node.js.
 
 portfolio-project/
 │
-├── frontend-app   → Angular application
-├── backend-node   → Node.js API
+├── frontend-app/        # Angular application
+│   ├── src/
+│   ├── angular.json
+│   ├── package.json
+│   └── ...
+│
+├── backend-node/        # Node.js + Express API
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── package.json
+│   └── server.js
 │
 └── README.md
 
