@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alex Rivera | Senior Full-Stack Engineer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17cfcb",
+                        "background-light": "#f9fafa",
+                        "background-dark": "#242428",
+                        "neutral-dark": "#2d2d32",
+                        "border-dark": "#3f3f46"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(36, 36, 40, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(63, 63, 70, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-slate-100 font-display">
+<!-- Sticky Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-background-dark font-bold">terminal</span>
+</div>
+<span class="text-xl font-extrabold tracking-tight">{{full_name}}</span>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#about">About</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#skills">Skills</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#experience">Experience</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#projects">Projects</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#education">Education</a></div>
+<a class="bg-primary text-background-dark px-6 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity" href="#contact">
+                Hire Me
+            </a>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 text-center">
+<div class="relative mb-10">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+<div class="relative w-48 h-48 md:w-56 md:h-56 rounded-full border-4 border-primary/30 p-2">
+<img alt="Alex Rivera Profile" class="w-full h-full object-cover rounded-full" data-alt="Professional headshot of a smiling man in tech"
+[src]= "profileImage 
+    ? 'http://localhost:3000/upload_images/' + profileImage : 
+'https://lh3.googleusercontent.com/aida-public/AB6AXuAleKiRykcFfogBD9THVN25B6MOVwJdSa1DK8E5fDEfcBD5La_BkarJoU5KsPPVsnKqlNxP2umPPbPpXYlPEUFUu8XzhJ9AXiFo9YwMzOXhjiA0HGX4_L57-P0Aguy8F1AiGaiOBWUtrWUoZIqj6ZFQ1o5oB2iFOrJfJwEqH-qrco1V2GAUzjDLz41Z44x_yHpGX3TbxMDN9otdYJWDQEyEyWfz_k2n_wmIuTQk0EV9W8EwdhuQCiTYGQacyHRtfZb9xTjJKCWbIszf'"/>
+</div>
+</div>
+<h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+                {{role}}
+                <!-- <span class="text-primary">Engineer</span> -->
+</h1>
+<p class="max-w-2xl text-lg md:text-xl text-slate-400 mb-10 leading-relaxed">
+                I build scalable, high-performance web applications with a focus on clean architecture and exceptional user experiences. 8+ years of transforming complex problems into elegant software.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="bg-primary text-background-dark px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform" href="#projects">
+                    View My Projects
+                </a>
+<a class="bg-neutral-dark border border-border-dark px-8 py-4 rounded-xl font-bold text-lg hover:bg-neutral-dark/80 transition-colors" href="#contact">
+                    Contact Me
+                </a>
+</div>
+</section>
+<!-- About Section -->
+<section class="max-w-7xl mx-auto px-6 py-24 border-t border-border-dark" id="about">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+    
+    <span class="text-primary font-bold tracking-widest text-sm uppercase mb-4 block">
+      About Me
+    </span>
+
+    <p  class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
+    {{ bio }}</p>
+
+    <!-- <p *ngFor="let paragraph of descriptionParagraphs"
+     class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
+    {{ paragraph }}
+    </p> -->
+
+
+  </div>
+</section>
+<!-- Skills Section -->
+<!-- <section class="py-16 border-t border-slate-100 dark:border-slate-800" id="skills">
+<h2 class="text-3xl font-bold mb-10 text-center">Tech Stack &amp; Tools</h2>
+<div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+
+<span class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm text-sm font-bold flex items-center gap-2">
+        TypeScript
+    </span> -->
+
+
+<!-- <span class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm text-sm font-bold flex items-center gap-2">
+<img alt="Node.js" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA30S4DZFw_QPljpR7BzcjZ6TXgb09m0jdg1OToOdy_9mjQERB275vTknOxxdTpBbjoTUM4JXDH5yySMVh0CO2C9vhxLYCAcbSE9k9whvUNqix--PYsvCw7wx97sD4EDZGy0RvzwWjp8rMCp9tEBGeGdXf8Wv5VaovsOSa00JjmVEWZwKXRMTh1bamWxJMTJoE-xm0AFEhGfVl4QwIQE4yyP-2JGJxWqTku_6sqXn6bp28XQekY2vhWh62SBGOPiq6v77ftKHImAeBQ"/> Node.js / Express
+                </span> -->
+<!-- <span class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm text-sm font-bold flex items-center gap-2">
+<img alt="TypeScript" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyr-9VNpSGmehSYtOznoDsYCmHCcSCi0EbS-8PsJUFQBaUFi2TjxWskQR5aKodF6kyXIxVqEyXR9ZuervsY6HtPK8fwh91O3dIFWyAXrofo4lIZZvZmv2x7f1en_Z_OsVAtmejmewHDM1brrrtFLkWX1LGue743f2a6BB9xm2nW9BNKaCKHQ1LOVjd1kLjgfxyMeoEqIJ5qB5zOWrIe0fxgxNwrjBPriZHIo5VpMCFV1QxlZlEL2oGBbAGcejRoWSD2EH0kxdPJcF4"/> TypeScript
+                </span>
+<span class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm text-sm font-bold flex items-center gap-2">
+<img alt="PostgreSQL" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEFSrB-gkcCly5hPS9OS9djHXwjVuUNYddoj9iFSbyVuMhUjVZCB8dYrTHNCsfMfDda2ZSojDSdJYGQoXoxSpjHb2mD_6ebmET7zvCqpDYPd9jI-mt2Snw7NXP8CsYr_XNjs6Eud_Oq5CDeu-nRXpoXqB5ocYuAIJC48AEHNrbkB2r5kPXoJhdfn4SiY1P3uoXfsEufESXzvZ92giiso1Was_lOD-atughv8QSL_sQop2tp2IckLmzCiHBSw3qOodEG_OnA3o3crz_"/> PostgreSQL / MongoDB
+                </span>
+<span class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm text-sm font-bold flex items-center gap-2">
+<img alt="Docker" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzrj05HG0wjcqYeqag2HhDasC2e6V8SUEWD_2lbW-pzD12N_x2ZBj4dZyeYFDWCe_Fa4GFFDW_TCpW94aj9YhWqo11mVpHuc0won86SHihy14yA1ALJBRIk5ZXRQz5x2MtKBU8J0Y01d3_YJxw2hu3ipA9mQ7swRnaNnT5vyU-SRb8uyVruNSGLCkHcu5eb6uRSvzbhSOtLdI87Zvt7mMfYOx41uJ6DN_aPqWQLwx-gNkJCHfrl--Avv-dglYTaqN_vlaaYxR2Ga7p"/> Docker / Kubernetes
+                </span>
+<span class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm text-sm font-bold flex items-center gap-2">
+<img alt="AWS" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqP2ayr7Ww7iVWy5_BGnYNPfHYqAhFKEneICgymmALaZUZT8ehrl_AwHIqMBfKg6uyOz3LS0e_1ROnkox44mt2m5nJGN1FO0bnHjoK6Ih6Q1PPDemXgbt2FKk0wxXR2cxB1V-tLidavHUVRVfa6T6W6abs16QLzR7nmMQS-9sYC0ab7msJ5J1IKHK58omOYbhj-3KDppxH5gAedk6oqDcPbOvQt4rADauQT12BRxFM-vufbOXb6kxj9BRnaXxWTf5wrrXLWurozvzp"/> AWS Cloud
+                </span>
+<span class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm text-sm font-bold flex items-center gap-2">
+<img alt="Tailwind" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXREcQ8W76wKNc9oxX1LMZ8rwGPVHGzknkprFIYg95CBbsyhX7UeHcXdcatzflszJXHmYP9j85uGi6GYqkNJf9pm-OVholIPKG4iGcy3L20sDVaY_OSVI2LsVnCzCm6SElrLfkNo9m2O0dnKQd1LUZ3HISGPHfhnPzrfTu_hjDMJBfBHUSSRSNANJ3m11cfQKkuRMkjai1I037b3kQZ19EqN9d9UShWcXLyR-EecJg-Iyo6CWT3mE6IsxQ5HU_l5Us_0QaIVqNvPcG"/> Tailwind CSS
+                </span>
+<span class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm text-sm font-bold flex items-center gap-2">
+<img alt="Python" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtI1Egy3cL5EP66k59c0IGW8ULZTw-BWnjukbqF-hKWMaBwU-uATfypnF6bbH8lGy_TbXdUSbvnDhqGULuNghJRUVyatBP2tio2aTmrzvfgPZy03M9WVASOI9rNex1AnxtMJDID3RuilQtOF8X8EcKbYd38mHFJsNKWRE_lXYP9HdrhfLxEinw6BteVIPiAsUF0wnrDAs-i_zu3UQdHLjHynYjmw8C7bL0-nzfE9gHpf_41SnXAGspqqdcIg-lfVLq8K10nXqiinIh"/> Python / Django
+                </span> -->
+<!-- </div>
+</section> -->
+
+
+
+
+<!-- BEGIN: Experience Section -->
+
+<section class="py-24 border-t border-border-dark" id="experience">
+  <div class="max-w-6xl mx-auto px-6">
+    
+    <div class="text-center mb-20">
+      <span class="text-primary font-bold tracking-widest text-sm uppercase mb-4 block">
+        Work Experience
+      </span>
+      <h2 class="text-4xl font-bold">Professional Journey</h2>
+    </div>
+
+  <div class="relative">
+  
+  <!-- Center Line -->
+  <div class="absolute left-1/2 top-0 bottom-0 w-[2px] bg-border-dark hidden md:block"></div>
+
+  @for (exp of allExperiences; track exp.id; let i = $index) {
+
+    <div class="relative mb-16 md:flex md:items-start md:justify-between">
+
+      <!-- EVEN (LEFT CARD) -->
+      @if (i % 2 === 0) {
+
+        <div class="md:w-[45%] bg-neutral-dark p-8 rounded-2xl border border-border-dark hover:border-primary/40 transition-colors">
+          
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <h3 class="text-xl font-bold">{{exp.role}}</h3>
+            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">
+              {{exp.employment_type}}
+            </span>
+          </div>
+
+          <p class="text-primary font-semibold">{{exp.company_name}}</p>
+
+          <p class="text-slate-400 text-sm mb-4">
+            {{ exp.start_date | date:'MMM yyyy' }} –
+            {{ exp.end_date ? (exp.end_date | date:'MMM yyyy') : 'Present' }} | {{exp.location}}
+          </p>
+
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Orchestrated migration to microservices architecture, improving scalability by 400% 
+            and significantly reducing API latency.
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+               @for(tech of exp.tech_stack.split(','); track tech){
+            <span class="bg-background-dark px-3 py-1 rounded text-xs">{{tech}}</span> 
+            } 
+          </div>
+        </div>
+
+        <!-- Timeline Dot -->
+        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 mt-6">
+          <div class="w-5 h-5 bg-primary rounded-full ring-4 ring-background-dark"></div>
+        </div>
+
+        <div class="md:w-[45%] hidden md:block"></div>
+      }
+
+      <!-- ODD (RIGHT CARD) -->
+      @if (i % 2 !== 0) {
+
+        <div class="md:w-[45%] hidden md:block"></div>
+
+        <!-- Timeline Dot -->
+        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 mt-6">
+          <div class="w-5 h-5 bg-primary rounded-full ring-4 ring-background-dark"></div>
+        </div>
+
+        <div class="md:w-[45%] bg-neutral-dark p-8 rounded-2xl border border-border-dark hover:border-primary/40 transition-colors">
+          
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <h3 class="text-xl font-bold">{{exp.role}}</h3>
+            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">
+              {{exp.employment_type}}
+            </span>
+          </div>
+
+          <p class="text-primary font-semibold">{{exp.company_name}}</p>
+
+          <p class="text-slate-400 text-sm mb-4">
+            {{ exp.start_date | date:'MMM yyyy' }} –
+            {{ exp.end_date ? (exp.end_date | date:'MMM yyyy') : 'Present' }} | {{exp.location}}
+          </p>
+
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+           {{exp.description}}
+          </p>
+
+          <div class="flex flex-wrap gap-2">   
+            @for(tech of exp.tech_stack.split(','); track tech){
+            <span class="bg-background-dark px-3 py-1 rounded text-xs">{{tech}}</span> 
+            }   
+          </div>
+        </div>
+      }
+
+    </div>
+  }
+
+</div>
+
+  </div>
+</section>
+
+<!-- END: Experience Section -->
+
+<!-- Education Section -->
+<section class="max-w-7xl mx-auto px-6 py-24 border-t border-border-dark" id="education">
+<div class="text-center mb-16">
+<span class="text-primary font-bold tracking-widest text-sm uppercase mb-4 block">Academic Background</span>
+<h2 class="text-4xl font-bold">Education</h2>
+</div>
+<div class="grid gap-6">
+
+@for(edu of allEducation; track edu.id){
+
+<div class="bg-neutral-dark p-8 rounded-2xl border border-border-dark flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-2xl font-bold text-slate-100">{{edu.degree}}</h3>
+<p class="text-primary font-semibold mt-1">{{edu.institution}}</p>
+<p class="text-slate-400 text-sm mt-1">{{edu.start_year}} — {{edu.end_year}}</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">{{edu.status}}</span>
+<span class="text-slate-300 font-bold text-sm">{{edu.grade}}</span>
+</div>
+</div>
+<p class="text-slate-400 leading-relaxed pt-4 border-t border-border-dark/50">
+{{edu.description}}            </p>
+</div>
+   }
+</div>
+</section>
+<!-- Projects Section -->
+<section class="max-w-7xl mx-auto px-6 py-24" id="projects"><div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div class="max-w-xl">
+<span class="text-primary font-bold tracking-widest text-sm uppercase mb-4 block">Portfolio</span>
+<h2 class="text-4xl font-bold">Featured Projects</h2>
+</div>
+<a class="text-primary font-bold flex items-center gap-2 hover:underline" href="#">
+        View All Projects <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Project 1 -->
+@for(project of allProjects; track project.id) {
+<div class="group bg-neutral-dark rounded-2xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all flex flex-col">
+<div class="h-64 overflow-hidden relative">
+<img alt="Fintech Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+ [src]= "project.image_url 
+    ? 'http://localhost:3000/upload_images/' + project.image_url :
+ 'https://lh3.googleusercontent.com/aida-public/AB6AXuCKSzyxtX9mby2h0ttfciYt8eh3cFRcxUTNFxP2UEaieLSve0mY5cc7Y38VDiXYEukQ_P1gn1QawJGcRASRx-5WR5Zds5eXbffJH-zMv9Mm7YDfwL4-QRRM11hOvKwS_ALi81kjRvDwgZXyqSNLCgM3svh5jmOzYlTM7uF_hSazRs5FW1CDieN40aHWn9XGKX_7g1lMFnT4kMrPWUlxkOD20cEmLwFGW5QgZ5T0CmXMMdGbO_I6fbSLmcBY9YwSVVCD6ZIZRodveizV'"/>
+<div class="absolute top-4 right-4 flex gap-2">
+<span class="bg-primary/20 text-primary backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">{{project.project_type}}</span>
+<span class="bg-white/10 text-white backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">{{project.status}}</span>
+</div>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<h3 class="text-2xl font-bold mb-3">{{project.title}}</h3>
+<p class="text-slate-400 mb-6 text-sm leading-relaxed">
+{{project.short_description}}            </p>
+<div class="flex flex-wrap gap-2 mb-8">
+    @for(tech of project.tech_stack.split(','); track tech){
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">{{tech}}</span>
+    }
+</div>
+<div class="mt-auto grid grid-cols-1 sm:grid-cols-3 gap-3">
+<a class="flex items-center justify-center gap-2 bg-background-dark text-slate-200 py-3 rounded-xl text-xs font-bold hover:bg-neutral-dark/50 transition-colors border border-border-dark cursor-pointer"
+ (click)="projectDetails(project.id)">
+                    View Details
+                </a>
+<a class="flex items-center justify-center gap-2 bg-primary text-background-dark py-3 rounded-xl text-xs font-bold hover:opacity-90 transition-opacity"
+ [href]="project.live_url" 
+   target="_blank" 
+   rel="noopener noreferrer">
+                    Live Demo
+                </a>
+<a class="flex items-center justify-center gap-2 border border-border-dark text-slate-200 py-3 rounded-xl text-xs font-bold hover:bg-white/5 transition-colors"
+ [href]="project.github_url" 
+   target="_blank" 
+   rel="noopener noreferrer">
+                    GitHub
+                </a>
+</div>
+</div>
+</div>
+}
+<!-- Project 2 -->
+
+</div>
+</section>
+<!-- Contact Section -->
+<section class="max-w-7xl mx-auto px-6 py-24" id="contact">
+<div class="bg-neutral-dark rounded-3xl p-8 md:p-16 border border-border-dark relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="grid lg:grid-cols-2 gap-16 relative z-10">
+<div>
+<span class="text-primary font-bold tracking-widest text-sm uppercase mb-4 block">Let's Talk</span>
+<h2 class="text-4xl md:text-5xl font-bold mb-8">Have a project in mind?</h2>
+<p class="text-slate-400 text-lg mb-12">
+                            I'm currently available for freelance work and full-time opportunities. Send me a message and let's build something amazing together.
+                        </p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 p-3 rounded-lg">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<span class="text-slate-200 font-medium">{{email}}</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 p-3 rounded-lg">
+<span class="material-symbols-outlined text-primary">location_on</span>
+</div>
+<span class="text-slate-200 font-medium" data-location="San Francisco, USA">{{city}}</span>
+</div>
+</div>
+</div>
+<form [formGroup]="contactMe" (ngSubmit)="recruiterMessage()" class="space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-300">Your Name</label>
+<input formControlName="name" class="bg-background-dark border border-border-dark rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-primary transition-colors" placeholder="John Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-300">Email Address</label>
+<input formControlName="email" class="bg-background-dark border border-border-dark rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-primary transition-colors" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-300">Message</label>
+<textarea formControlName="message" class="bg-background-dark border border-border-dark rounded-xl px-4 py-3 text-slate-100 focus:outline-none focus:border-primary transition-colors" placeholder="Tell me about your project..." rows="5"></textarea>
+</div>
+<button class="w-full bg-primary text-background-dark py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-opacity" type="submit">
+                            Send Message
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="max-w-7xl mx-auto px-6 py-12 border-t border-border-dark flex flex-col md:flex-row justify-between items-center gap-8">
+<p class="text-slate-500 text-sm">
+            © 2024 Alex Rivera. Built with passion and code.
+        </p>
+<div class="flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<svg class="w-6 h-6 fill-currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<svg class="w-6 h-6 fill-currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Details | DevPortfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17cfcb",
+                        "background-light": "#f9fafa",
+                        "background-dark": "#242428",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+      .glass-card {
+    background: rgba(30, 41, 59, 0.6); /* dark slate */
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(23, 207, 203, 0.2);
+}
+    </style>
+</head>
+<body class="bg-background-dark text-slate-100 antialiased">
+  <!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200/60 dark:border-slate-800/60 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">terminal</span>
+</div>
+<span class="font-display font-extrabold text-xl tracking-tight">DevPortfolio</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Projects</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Experience</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">About</a>
+<a class="px-5 py-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-full text-sm font-bold hover:opacity-90 transition-opacity" href="#">Resume</a>
+</nav>
+<div class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-12 md:py-20">
+<!-- Hero Section -->
+
+
+
+<section class="flex flex-col gap-8 mb-16">
+
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">{{projectView.value.project_type}}</span>
+<span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">{{projectView.value.status}}</span>
+</div>
+<div class="max-w-3xl">
+<h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight"
+ >{{projectView.value.title}}
+                  
+                </h1>
+<p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+{{projectView.value.short_description}}                </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<a *ngIf="projectView.value.live_url" class="flex items-center gap-2 px-8 py-4 bg-primary text-slate-900 rounded-xl font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform" 
+  [href]="projectView.value.live_url" 
+   target="_blank" 
+   rel="noopener noreferrer">
+<span class="material-symbols-outlined text-xl">open_in_new</span>
+                    Live Preview
+                </a>
+<a *ngIf="projectView.value.github_url" class="flex items-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold hover:bg-slate-50 transition-colors" 
+   [href]="projectView.value.github_url" 
+   target="_blank" 
+   rel="noopener noreferrer">
+  <span class="material-symbols-outlined text-xl">code</span>
+  View Source
+</a>
+</div>
+</section>
+<!-- Gallery Section -->
+<section class="mb-20">
+  
+<div class="rounded-2xl overflow-hidden border border-slate-200/60 dark:border-slate-800/60 shadow-2xl mb-6">
+<div class="w-full h-[600px] relative">
+<div class="absolute inset-0 overflow-auto">
+  <img
+    *ngIf="selectedImage"
+    [src]="'http://localhost:3000/upload_images/' + selectedImage"
+    class="min-w-full h-auto"
+    alt="Project Preview"
+  />
+</div>
+</div>
+</div>
+ 
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+@for(img of projectImages; track img.id){
+  <div 
+    class="aspect-video rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-primary transition-colors cursor-pointer"
+    (click)="selectImage(img.url)"
+  >
+    <img
+      class="w-full h-full object-cover"
+      [src]="'http://localhost:3000/upload_images/' + img.url"
+      alt="Project Image"
+    />
+    
+  </div>
+  
+}
+</div>
+
+</section>
+<!-- Content Grid -->
+<div class="grid lg:grid-cols-3 gap-16">
+<!-- Left: Description & Features -->
+<div class="lg:col-span-2 space-y-16">
+<section>
+<h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+<span class="w-8 h-1 bg-primary rounded-full"></span>
+                        Project Overview
+                    </h3>
+<div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 space-y-4">
+
+ <p *ngFor="let para of descriptionParagraphs">
+    {{ para }}
+  </p>                        
+
+</div>
+</section>
+<section>
+<h3 class="text-2xl font-bold mb-8">Key Features</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-10 max-w-2xl">
+
+@for(fea of features; track fea.id){
+<div class="feature-entry flex items-start gap-3">
+ <span class="material-symbols-outlined text-primary !text-lg mt-1 shrink-0">
+    fiber_manual_record
+  </span>
+<p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+{{fea.feature}}        </p>
+</div>
+}
+
+
+</div>
+</div>
+</section>
+</div>
+<!-- Right: Tech Stack Sidebar -->
+<aside class="space-y-8">
+<div class="p-8 rounded-3xl glass-card sticky top-24">
+<h3 class="text-xl font-bold mb-8">Technology Stack</h3>
+<div class="space-y-6">
+
+<div class="flex flex-wrap gap-2">
+  @for(tech of allTech?.split(','); track tech) {
+    <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-semibold text-slate-700 dark:text-slate-300">
+      {{ tech }}
+    </span>
+  }
+</div>
+
+<!-- <div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Backend &amp; DB</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-semibold">Node.js</span>
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-semibold">PostgreSQL</span>
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-semibold">Redis</span>
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-semibold">Prisma</span>
+</div>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Infrastructure</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-semibold">AWS S3</span>
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-semibold">Docker</span>
+<span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-semibold">GitHub Actions</span>
+</div>
+</div> -->
+
+</div>
+<div class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="Developer profile photo">
+<img 
+  [src]="imageUrl" 
+  alt="Profile Image" 
+  class="w-12 h-12 rounded-full object-cover"
+ ></div>
+
+<div>
+<p class="font-bold text-sm">{{title}}</p>
+<p class="text-xs text-slate-500">{{full_name}}</p>
+</div>
+
+</div>
+</div>
+</div>
+</aside>
+</div>
+
+<!-- Footer Call to Action -->
+<section class="mt-20 py-12 border-t border-slate-200 dark:border-slate-800 text-center">
+<h3 class="text-2xl font-bold mb-4">Like this project?</h3>
+<p class="text-slate-500 mb-8 max-w-md mx-auto">I'm currently open to full-time roles or freelance opportunities. Let's build something amazing together.</p>
+<div class="flex justify-center gap-4">
+<a class="px-6 py-3 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-xl font-bold" href="#">Contact Me</a>
+</div>
+</section>
+
+</main>
+<footer class="py-12 bg-white dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-slate-500 text-sm">© 2024 Alex Rivers. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">link</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">hub</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+</footer>
+</body></html>
+
+<!-- --------------------------------------------- -->
+

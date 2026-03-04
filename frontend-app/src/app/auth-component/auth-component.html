@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevPortfolio | Create Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17cfcb",
+                        "background-light": "#f9fafa",
+                        "background-dark": "#242428",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBtK22ilezfx7Tkf9PjE0kCyKEoGgSlk9FUR7-Yl9Nj7gedAthk1aSsoDkbHRAcknwqhNmPJAwi0EnvvrV06xIiRt26A-HuemgCBxtio_8pSqSizPgG4LORg4BtbQwBP1U9mhFXR1I1O3WPHS6ezTByxWPvXpMwtXxZSHrzSr3zIN_czJgKxHnvo0hmPrhxqXxxZsVpsSqXNNbJ2aremmmpzk_x3HqEYKIfiDKkfcwx8v1itT5yDiw_pXLOpTo6RhF8ybATYc7sbc1r);
+            z-index: 1;
+        }
+        .inset-input {
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.05), inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        .inset-input:focus {
+            box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.03), 0 0 15px rgba(23, 207, 203, 0.15);
+            border-color: rgba(23, 207, 203, 0.3);
+        }
+        body {
+            background-color: #f9fafa;
+            background-image: radial-gradient(at 0% 0%, rgba(23, 207, 203, 0.05) 0, transparent 50%), radial-gradient(at 100% 100%, rgba(23, 207, 203, 0.05) 0, transparent 50%);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
+<header class="flex items-center justify-between whitespace-nowrap px-10 py-6 max-w-[1200px] mx-auto w-full">
+<div class="flex items-center gap-3 text-[#111818] dark:text-white">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">terminal</span>
+</div>
+<h2 class="text-lg font-extrabold leading-tight tracking-[-0.03em]">DevPortfolio</h2>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-[#638887] dark:text-gray-400 text-sm font-semibold hover:text-primary transition-colors" href="#">Showcase</a>
+<a class="text-[#638887] dark:text-gray-400 text-sm font-semibold hover:text-primary transition-colors" href="#">For Recruiters</a>
+<a class="text-[#638887] dark:text-gray-400 text-sm font-semibold hover:text-primary transition-colors" href="#">Pricing</a>
+</div>
+</header>
+<main class="flex-1 flex items-center justify-center p-6">
+<div class="w-full max-w-[460px] glass-panel rounded-xl p-8 md:p-10 z-10">
+<div class="flex flex-col items-center mb-6">
+<h1 class="text-[#111818] dark:text-white text-3xl font-extrabold tracking-tight mb-2">Join DevPortfolio</h1>
+<p class="text-[#638887] text-sm font-medium">Build a portfolio that recruiters love.</p>
+</div>
+
+<div class="flex mb-6">
+  <div class="flex h-11 flex-1 items-center justify-center rounded-xl bg-gray-100/50 p-1">
+
+    <button
+      (click)="toggleLogin()"
+      class="flex h-full grow items-center justify-center rounded-lg px-2 text-xs font-bold uppercase tracking-wider transition-all"
+      [class.bg-white]="isLogin"
+      [class.shadow-sm]="isLogin"
+      [class.text-[#111818]]="isLogin"
+      [class.text-[#638887]]="!isLogin"
+    >
+      Login
+    </button>
+
+    <button
+      (click)="toggleSignup()"
+      class="flex h-full grow items-center justify-center rounded-lg px-2 text-xs font-bold uppercase tracking-wider transition-all"
+      [class.bg-white]="!isLogin"
+      [class.shadow-sm]="!isLogin"
+      [class.text-[#111818]]="!isLogin"
+      [class.text-[#638887]]="isLogin"
+    >
+      Sign Up
+    </button>
+
+  </div>
+</div>
+
+
+<form #authForm="ngForm" (ngSubmit)="onSubmit()" class="space-y-4">
+
+<!-- LOGIN -->
+<div *ngIf="isLogin" class="space-y-1.5">
+<label class="text-[#111818] dark:text-gray-200 text-[10px] font-bold tracking-[0.1em] uppercase ml-1">Email Address</label>
+<div class="relative">
+<input class="inset-input flex w-full rounded-xl text-[#111818] border border-transparent bg-white/50 focus:outline-0 focus:ring-0 h-12 placeholder:text-[#638887]/50 px-5 text-base font-normal" placeholder="dev@example.com" name="email" [(ngModel)] = "login_email" type="email"/>
+</div>
+</div>
+
+
+<div *ngIf="isLogin" class="space-y-1.5">
+<label class="text-[#111818] dark:text-gray-200 text-[10px] font-bold tracking-[0.1em] uppercase ml-1">Password</label>
+<div class="relative">
+<input class="inset-input flex w-full rounded-xl text-[#111818] border border-transparent bg-white/50 focus:outline-0 focus:ring-0 h-12 placeholder:text-[#638887]/50 px-5 text-base font-normal" placeholder="••••••••" name="password" [(ngModel)] = "login_password" type="password"/>
+</div>
+</div>
+
+<!-- SIGNUP -->
+<div *ngIf="!isLogin" class="space-y-1.5">
+<label class="text-[#111818] dark:text-gray-200 text-[10px] font-bold tracking-[0.1em] uppercase ml-1">Full Name</label>
+<div class="relative">
+<input class="inset-input flex w-full rounded-xl text-[#111818] border border-transparent bg-white/50 focus:outline-0 focus:ring-0 h-12 placeholder:text-[#638887]/50 px-5 text-base font-normal" name="Full name" [(ngModel)]="full_name"  placeholder="John Doe" type="text"/>
+</div>
+</div>
+
+<div *ngIf="!isLogin" class="space-y-1.5">
+<label class="text-[#111818] dark:text-gray-200 text-[10px] font-bold tracking-[0.1em] uppercase ml-1">Email Address</label>
+<div class="relative">
+<input class="inset-input flex w-full rounded-xl text-[#111818] border border-transparent bg-white/50 focus:outline-0 focus:ring-0 h-12 placeholder:text-[#638887]/50 px-5 text-base font-normal" placeholder="dev@example.com" name="email" [(ngModel)] = "signup_email" type="email"/>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div *ngIf="!isLogin" class="space-y-1.5">
+<label class="text-[#111818] dark:text-gray-200 text-[10px] font-bold tracking-[0.1em] uppercase ml-1">Password</label>
+<div class="relative">
+<input class="inset-input flex w-full rounded-xl text-[#111818] border border-transparent bg-white/50 focus:outline-0 focus:ring-0 h-12 placeholder:text-[#638887]/50 px-5 text-base font-normal" name="password" [(ngModel)] = "signup_password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+
+<div *ngIf="!isLogin" class="space-y-1.5">
+<label class="text-[#111818] dark:text-gray-200 text-[10px] font-bold tracking-[0.1em] uppercase ml-1">Confirm Password</label>
+<div class="relative">
+<input class="inset-input flex w-full rounded-xl text-[#111818] border border-transparent bg-white/50 focus:outline-0 focus:ring-0 h-12 placeholder:text-[#638887]/50 px-5 text-base font-normal" name="confirm_password" [(ngModel)] = "confirm_password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+</div>
+
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/30 active:scale-[0.98] transition-all text-sm tracking-wide uppercase mt-4" type="submit">
+              {{ isLogin ? 'Sign In to Dashboard' : 'Create Account' }}
+</button>
+</form>
+
+<div *ngIf="isLogin" class="flex items-center my-6">
+<div class="flex-1 h-[1px] bg-gray-200 dark:bg-gray-700"></div>
+<span class="px-4 text-[10px] font-bold text-[#638887] uppercase tracking-widest">or sign in with</span>
+<div class="flex-1 h-[1px] bg-gray-200 dark:bg-gray-700"></div>
+</div>
+
+<div *ngIf="!isLogin" class="flex items-center my-6">
+<div class="flex-1 h-[1px] bg-gray-200 dark:bg-gray-700"></div>
+<span class="px-4 text-[10px] font-bold text-[#638887] uppercase tracking-widest">or sign up with</span>
+<div class="flex-1 h-[1px] bg-gray-200 dark:bg-gray-700"></div>
+</div>
+
+<div class="grid grid-cols-1 gap-4">
+<button class="flex items-center justify-center gap-3 w-full h-14 rounded-xl border border-gray-100 bg-white/40 hover:bg-white/60 transition-colors text-[#111818] font-bold text-sm">
+<svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+</svg>
+<span>GitHub</span>
+</button>
+</div>
+<p class="mt-8 text-center text-[11px] leading-relaxed font-medium text-[#638887]">
+            By joining, you agree to our <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+        </p>
+</div>
+</main>
+<div class="fixed top-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full -z-10"></div>
+<div class="fixed bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full -z-10"></div>
+<div class="fixed inset-0 pointer-events-none -z-20 flex items-center justify-center opacity-30">
+<div class="w-[800px] h-[800px] border-[0.5px] border-primary/20 rounded-full flex items-center justify-center">
+<div class="w-[600px] h-[600px] border-[0.5px] border-primary/20 rounded-full flex items-center justify-center">
+<div class="w-[400px] h-[400px] border-[0.5px] border-primary/20 rounded-full"></div>
+</div>
+</div>
+</div>
+
+</body></html>

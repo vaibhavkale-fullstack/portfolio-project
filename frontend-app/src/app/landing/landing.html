@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevFolio | Professional Portfolio Builder for Developers</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17cfcb",
+                        "background-light": "#f9fafa",
+                        "background-dark": "#242428",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .stack-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        }
+        .stack-card:hover {
+            transform: translateY(-10px) rotate(0deg) scale(1.02) !important;
+            z-index: 50 !important;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(23, 207, 203, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(23, 207, 203, 0.03) 0%, transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111818] dark:text-white transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-[#f0f4f4] dark:border-[#3a3a40]">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">terminal</span>
+</div>
+<h2 class="text-xl font-extrabold tracking-tight">DevFolio</h2>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Features</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Templates</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Showcase</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-sm font-bold px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" routerLink="/auth">Sign In</button>
+<button class="bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+                    Get Started
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-20 hero-gradient">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-6 py-16 lg:py-28 flex flex-col lg:flex-row items-center gap-16">
+<!-- Hero Text -->
+<div class="flex-1 space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                    Built for Full-Stack Developers
+                </div>
+<h1 class="text-5xl lg:text-7xl font-black leading-[1.1] tracking-[-0.04em] text-[#111818] dark:text-white">
+                    Build a Professional Portfolio <span class="text-primary">That Gets You Hired.</span>
+</h1>
+<p class="text-lg lg:text-xl text-[#638887] dark:text-gray-400 font-medium max-w-xl leading-relaxed">
+                    The only portfolio builder designed specifically for engineers. Showcase your architecture, your code quality, and your real-world impact in minutes.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:scale-[1.02] transition-transform">
+                        Create Your Portfolio
+                    </button>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-gray-800 border border-[#dce5e5] dark:border-gray-700 text-[#111818] dark:text-white text-base font-bold hover:bg-gray-50 transition-colors">
+                        View Templates
+                    </button>
+</div>
+<div class="flex items-center gap-4 pt-8 border-t border-[#f0f4f4] dark:border-gray-800">
+<div class="flex -space-x-3">
+<div class="size-10 rounded-full border-2 border-white dark:border-gray-800 bg-cover" data-alt="Developer profile avatar 1" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-r62rlXZg_z_iKDC9rR5zFVez8ERTYxGu9f-kuquTl95t0fFH6ZYcfHf5TSCmPP_SamVGnKcwmZfDp729x9M9DPUOqnw1vIIUfTUD6bDV50IWrpHwFRV3Cts-2fBL9qkdTp3eeCpeE8bJHXpAjsb5BNxOM1S-GQsdzdlHxfXzAgUZdUzPBIMRjs6NVHDbPiDsN_JP5pmLiwRl9E9nL7NcQPKkukBf-JiACgmQEWWi_GBG54viqvHqMlKquHSYIAYIXozSYErxTIWu')"></div>
+<div class="size-10 rounded-full border-2 border-white dark:border-gray-800 bg-cover" data-alt="Developer profile avatar 2" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCBYEN7KMqterfNq-BBqMUMHVUXFw9NWORqhm3SdUNFhP3b8odsnCKCuGzNMS0YJacdLeUkwAtxAxWklzM_hfDTyNYDx7379C0mcdsKhGVQrapfaIfeG2vBoRtUBP-bS73wKB3p9DXkqMTO9merRx2L_Ai3FxiXIRN5IUGNCYNIcpU4KWzKuG19IeoEPC6VNrxI-cyro3hZNEmvOBcpXoKrHdYJmsF_fsUC5P9fWf5Lw_onJdLmpe65VOrFItLkufkqZWtRMcMbdD_H')"></div>
+<div class="size-10 rounded-full border-2 border-white dark:border-gray-800 bg-cover" data-alt="Developer profile avatar 3" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCAcrOUpLu6z9McsArGDSmIS2ygnwTQdZFDWB2JL4T9zm7EPRtEIKJdr5Wo9rMBpWd52UYR2e2RWXh5-Mw7LtSEPJG8Ejj_b0wo2AT4IWmvMdusXOGEhhQRYgyeL5B7pDX--Cdf0XtqsMM0Oirq_ocqXNN_8PrSJqvGFVs0fAIydSwtZbMtsRT3KuEi1t5pEcomb2ClRKsiiRhkao-7k2aFPaZS77Agbi4cDnouPIy1atx7Th6zcorZEyMopCrK3vt7orJY7mmnwAQt')"></div>
+</div>
+<p class="text-sm font-semibold text-[#638887]">Joined by 2,000+ senior developers this month</p>
+</div>
+</div>
+<!-- Hero Visual (3D Stacked Panels) -->
+<div class="flex-1 relative w-full h-[500px] lg:h-[600px] @container">
+<!-- Project Gallery Card (Bottom) -->
+<div class="stack-card absolute top-20 right-0 w-[85%] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6 transform rotate-3 z-10" style="transform: rotate(6deg) translateY(40px) translateX(20px);">
+<div class="flex items-center justify-between mb-4">
+<div class="h-4 w-24 bg-gray-100 dark:bg-gray-700 rounded-full"></div>
+<div class="flex gap-2">
+<div class="size-6 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">link</span>
+</div>
+</div>
+</div>
+<div class="w-full h-32 bg-gray-50 dark:bg-gray-900 rounded-xl mb-4 overflow-hidden">
+<div class="w-full h-full bg-gradient-to-br from-primary/20 to-blue-500/20 flex items-center justify-center" data-alt="Abstract UI dashboard preview">
+<span class="material-symbols-outlined text-primary text-4xl">dashboard</span>
+</div>
+</div>
+<div class="space-y-2">
+<div class="h-4 w-3/4 bg-gray-100 dark:bg-gray-700 rounded-full"></div>
+<div class="h-3 w-1/2 bg-gray-50 dark:bg-gray-700 rounded-full"></div>
+</div>
+</div>
+<!-- Skills Card (Middle) -->
+<div class="stack-card absolute top-10 right-10 w-[80%] bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 transform -rotate-2 z-20" style="transform: rotate(-3deg) translateY(10px);">
+<h4 class="text-sm font-bold text-gray-400 mb-4 uppercase tracking-tighter">Core Stack</h4>
+<div class="grid grid-cols-4 gap-4">
+<div class="aspect-square rounded-xl bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">javascript</span>
+</div>
+<div class="aspect-square rounded-xl bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">data_object</span>
+</div>
+<div class="aspect-square rounded-xl bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">database</span>
+</div>
+<div class="aspect-square rounded-xl bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">cloud</span>
+</div>
+</div>
+</div>
+<!-- Profile Card (Top) -->
+<div class="stack-card absolute top-0 left-0 w-[75%] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 p-8 z-30">
+<div class="flex items-center gap-5">
+<div class="size-16 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover" data-alt="Professional developer portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA4sIjI-G1zg_ZBCKzpjj7_J_wpdKbPRjtLCPNm6BbWSvlSDtAG3yOTQNeqUDeT1pvDjVT2lK6f36pwAb1mgBBrRImHyCUjgh0glgTBQjdBFKKRCIC7Jr5SqGSS90wpKQTkkGf2ETjMKBDzTet0qsvV-Za-eKq88yclS40Gm5jvnj0iEwXTvm2oHEzM9HJvh50CxXm5cNpfmlKMYGqEz_LxUSO8fVN_I1_5wIdrPdDrQTl5HHO_aoiJM2w2OIvt1izWvzeaRCXISC8r')"></div>
+</div>
+<div class="space-y-1">
+<h3 class="text-xl font-bold">Alex Rivera</h3>
+<p class="text-sm font-medium text-primary">Senior Full-Stack Engineer</p>
+</div>
+</div>
+<p class="mt-6 text-sm text-gray-500 dark:text-gray-400 leading-relaxed italic">
+                        "I build scalable distributed systems and delightful user experiences. Specializing in React, Go, and AWS architecture."
+                    </p>
+<div class="mt-6 flex gap-3">
+<div class="h-2 flex-1 bg-primary rounded-full"></div>
+<div class="h-2 flex-1 bg-gray-100 dark:bg-gray-700 rounded-full"></div>
+<div class="h-2 flex-1 bg-gray-100 dark:bg-gray-700 rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof Section -->
+<section class="max-w-7xl mx-auto px-6 py-12 border-y border-[#f0f4f4] dark:border-gray-800 bg-white/30 dark:bg-gray-900/30">
+<p class="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8">Trusted by engineers at</p>
+<div class="flex flex-wrap justify-center items-center gap-12 lg:gap-20 opacity-40 grayscale">
+<span class="font-bold text-2xl tracking-tighter italic">GitHub</span>
+<span class="font-bold text-2xl tracking-tighter italic">Vercel</span>
+<span class="font-bold text-2xl tracking-tighter italic">Stripe</span>
+<span class="font-bold text-2xl tracking-tighter italic">Linear</span>
+<span class="font-bold text-2xl tracking-tighter italic">Slack</span>
+</div>
+</section>
+<!-- Feature Section -->
+<section class="max-w-7xl mx-auto px-6 py-24">
+<div class="text-center mb-16 space-y-4">
+<h2 class="text-4xl font-black tracking-tight">Designed for the modern stack</h2>
+<p class="text-[#638887] dark:text-gray-400 max-w-2xl mx-auto font-medium">Every feature is built to highlight the complexity and quality of your work, from system architecture to unit test coverage.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="group p-8 rounded-2xl bg-white dark:bg-gray-800 border border-[#dce5e5] dark:border-gray-700 hover:border-primary/50 transition-all">
+<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Architecture Visualizer</h3>
+<p class="text-[#638887] dark:text-gray-400 text-sm leading-relaxed">Automatically generate interactive system diagrams from your repository structure.</p>
+</div>
+<!-- Feature 2 -->
+<div class="group p-8 rounded-2xl bg-white dark:bg-gray-800 border border-[#dce5e5] dark:border-gray-700 hover:border-primary/50 transition-all">
+<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">code_blocks</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Code Snippets</h3>
+<p class="text-[#638887] dark:text-gray-400 text-sm leading-relaxed">Embed high-quality syntax highlighting that supports 150+ programming languages.</p>
+</div>
+<!-- Feature 3 -->
+<div class="group p-8 rounded-2xl bg-white dark:bg-gray-800 border border-[#dce5e5] dark:border-gray-700 hover:border-primary/50 transition-all">
+<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Deployment Ready</h3>
+<p class="text-[#638887] dark:text-gray-400 text-sm leading-relaxed">One-click hosting on our edge network or export to static HTML/React files.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-7xl mx-auto px-6 pb-24">
+<div class="bg-[#111818] dark:bg-gray-900 rounded-[2rem] p-12 lg:p-20 text-center relative overflow-hidden">
+<!-- Abstract background pattern -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] -ml-48 -mb-48"></div>
+<h2 class="text-4xl lg:text-5xl font-black text-white mb-6 relative z-10">Ready to level up your career?</h2>
+<p class="text-gray-400 max-w-xl mx-auto text-lg mb-10 relative z-10">Join thousands of developers who have landed jobs at FAANG and top startups using DevFolio.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+<button class="w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                        Start Building for Free
+                    </button>
+<button class="w-full sm:w-auto px-10 py-4 bg-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-colors">
+                        Talk to an Expert
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-background-dark py-12 border-t border-[#f0f4f4] dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-6 bg-primary/20 text-primary rounded-md flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">terminal</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight">DevFolio</h2>
+</div>
+<div class="flex gap-8 text-sm font-medium text-gray-500 dark:text-gray-400">
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="hover:text-primary transition-colors" href="#">GitHub</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+</div>
+<p class="text-sm text-gray-400">© 2024 DevFolio Inc. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

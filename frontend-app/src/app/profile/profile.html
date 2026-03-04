@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile &amp; About Me Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17cfcb",
+                        "background-light": "#f9fafa",
+                        "background-dark": "#242428",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'raised': '0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.03)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(36, 36, 40, 0.85);
+        }
+        .ghost-input:focus {
+            box-shadow: none;
+            border-color: transparent;
+            outline: none;
+        }
+        .raised-avatar-frame {
+            box-shadow: 0 0 0 4px #fff, 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .dark .raised-avatar-frame {
+            box-shadow: 0 0 0 4px #2d2d32, 0 8px 30px rgba(0,0,0,0.25);
+        }
+      
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#111818] dark:text-gray-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-72 hidden md:flex flex-col bg-white dark:bg-[#1a1a1e] border-r border-gray-200 dark:border-gray-800 z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">architecture</span>
+</div>
+<h2 class="text-lg font-extrabold tracking-tight">Studio<span class="text-primary">.</span></h2>
+</div>
+<nav class="space-y-1.5">
+<p class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3 px-4">Menu</p>
+<a class="sidebar-link hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 group" href="/dashboard">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary">dashboard</span>
+<span class="text-[14px] font-bold">Dashboard</span>
+</a>
+<a class="sidebar-link bg-primary/10 text-primary" href="/profile">
+<span class="material-symbols-outlined text-[22px]">person</span>
+<span class="text-[14px] font-bold">Profile</span>
+</a>
+<a class="sidebar-link hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 group" href="/experience">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary">history_edu</span>
+<span class="text-[14px] font-bold">Experience</span>
+</a>
+<a class="sidebar-link hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 group" href="/education">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary">school</span>
+<span class="text-[14px] font-bold">Education</span>
+</a>
+<a class="sidebar-link hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 group" href="/skills">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary">terminal</span>
+<span class="text-[14px] font-bold">Tech Stack</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#638887] dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="/project">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-sm">Projects</span>
+</a>
+<div class="pt-4 mt-4 border-t border-gray-100 dark:border-gray-800">
+<a class="sidebar-link hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary">visibility</span>
+<span class="text-[14px] font-bold">Portfolio Preview</span>
+</a>
+</div>
+</nav>
+</div>
+
+<div class="mt-auto p-6">
+<div class="p-5 rounded-2xl bg-gray-50 dark:bg-gray-800/30 flex flex-col gap-3">
+<p class="text-xs font-semibold opacity-60">Profile Strength</p>
+<div class="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[85%] h-full bg-primary"></div>
+</div>
+<p class="text-[11px] font-bold text-primary">85% Complete</p>
+</div>
+<div class="mt-6 flex items-center gap-3 px-2">
+<div class="size-9 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+<div class="w-full h-full bg-center bg-cover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsIXM3k71N8XAHteq1JUO6PlRCWVBmBZM0Js8LkfbMGel0qWS9JgDRpiVYG3cFrt-nhOnOXAGnMSblNy8qNkrLf0gGmCVLQfqcdC8KMktCiMX0Pa6Og_5eZP27iB3HGcQXqHscHvBRm-whL3rmmJMNOna0x26cxfEw_Kne7j1T56SeQ5T4T2d-eAvRWpaqx_560M9qyKFZNclbRBYO4zN_Nhv39LY1dToKkbAxzZfB1mmaZQ4_M5_l8QJubizTDrN2tyxtynEhEz5h')"></div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">Alex Rivera</p>
+<p class="text-[10px] text-gray-500 truncate">alex.rivera@dev.com</p>
+</div>
+<button class="text-gray-400 hover:text-gray-600">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+</button>
+</div>
+</div>
+</aside>
+
+<div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+<header class="sticky top-0 z-40 glass-panel border-b border-gray-200/50 dark:border-gray-800/50 px-8 py-4">
+<div class="flex items-center justify-between">
+<div>
+<h1 class="text-xl font-extrabold tracking-tight">Profile Settings</h1>
+<p class="text-xs font-medium text-gray-500">Customize how you appear to the world</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>View Live</span>
+</button>
+<button *ngIf="!isEditMode && profileExists" (click)="enableEdit()" class="px-5 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:brightness-105 transition-all shadow-lg shadow-primary/20">
+        Edit Profile        
+                    </button>
+                    
+<button *ngIf="isEditMode && profileExists" (click)="cancelEdit()" class="px-5 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:brightness-105 transition-all shadow-lg shadow-primary/20">
+           Cancel Edit            
+                    </button>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-4xl mx-auto p-8 lg:p-12">
+
+<form #profileForm="ngForm" (ngSubmit)="checkProfile()" class="space-y-12">
+
+<section class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-12">
+<div class="relative group">
+
+<div  class="raised-avatar-frame rounded-full overflow-hidden w-40 h-40 border-4 border-white dark:border-gray-800 transition-transform duration-300 group-hover:scale-[1.02]">
+
+  <div 
+    class="w-full h-full bg-center bg-cover cursor-pointer"
+     (click)="isEditMode ? fileInput.click() : null"
+   [style.background-image]="'url(' + imageUrl + ')'"
+>
+  </div>
+  
+
+</div>
+
+  <input  [disabled]="!isEditMode"
+    #fileInput
+    type="file" 
+    (change)="onFileSelect($event)" 
+    accept="image/png, image/jpeg"
+    hidden />
+
+    <button 
+    *ngIf="isEditMode && profileImage"
+    type="button"
+    (click)="removeImage()"
+    class="absolute bottom-0 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+    Remove
+  </button>
+
+</div>
+<div class="flex-1 flex flex-col gap-4 text-center md:text-left pt-4">
+<div class="space-y-1">
+<input class="bg-transparent border-none text-4xl font-extrabold tracking-tight p-0 ghost-input w-full md:w-auto" placeholder="Your Name"  [disabled]="!isEditMode" name="name" [(ngModel)]="full_name" type="text" value="Alex Rivera"/>
+<div class="flex flex-wrap justify-center md:justify-start items-center gap-3 mt-3">
+<input class="bg-transparent border-none text-lg text-primary font-semibold p-0 ghost-input w-full md:w-auto" placeholder="Your Title"  [disabled]="!isEditMode" name="title" [(ngModel)]="title" type="text" value="Senior Full-Stack Engineer"/>
+<span class="hidden md:block size-1 bg-gray-300 rounded-full"></span>
+<div class="flex items-center gap-1.5 text-gray-500">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<input class="bg-transparent border-none text-sm font-medium p-0 ghost-input w-32" placeholder="Location" name="location"  [disabled]="!isEditMode" [(ngModel)]="city" type="text" value="San Francisco, CA"/>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-4 mt-2">
+
+  <!-- Resume Pill -->
+  <div
+    *ngIf="resumeFileName"
+    class="flex items-center gap-3 px-6 py-2 rounded-full 
+           bg-white dark:bg-gray-800 
+           shadow-raised hover:shadow-lg transition-all 
+           text-sm font-semibold 
+           border border-gray-100 dark:border-gray-700"
+  >
+
+    <!-- File Icon -->
+    <span class="material-symbols-outlined text-primary text-[20px]">
+      description
+    </span>
+
+    <!-- File Name -->
+    <span class="truncate max-w-[200px]">
+      {{ resumeFileName }}
+    </span>
+
+    <!-- Open Icon -->
+    <span
+     (click)="openResume()"
+      class="material-symbols-outlined text-gray-400 text-[18px] hover:text-gray-600 cursor-pointer"
+      title="Open Resume"
+    >
+      open_in_new
+    </span>
+
+    <!-- Delete Button -->
+    <button
+      type="button"
+      [disabled]="!isEditMode"
+      (click)="removeResume()"
+      class="flex items-center justify-center w-9 h-9 
+             rounded-full bg-gray-100 
+             hover:bg-red-100 
+             transition"
+      title="Delete Resume"
+    >
+      <span  class="material-symbols-outlined text-[18px] text-gray-500 hover:text-red-600">
+        delete
+      </span>
+    </button>
+
+  </div>
+
+  <!-- Link Button -->
+  <div class="relative inline-block">
+
+  <!-- Link Button -->
+  <button 
+    type="button"
+    *ngIf="showStoredName"
+    (click)="copyResumeLink()"
+    class="size-11 flex items-center justify-center rounded-full 
+           bg-white dark:bg-gray-800 
+           shadow-raised hover:shadow-lg 
+           transition-all border border-gray-100 dark:border-gray-700"
+    title="Copy Resume Link"
+  >
+    <span class="material-symbols-outlined text-gray-500 text-[20px]">
+      link
+    </span>
+  </button>
+
+  <!-- Popup -->
+  <span
+    *ngIf="isCopied"
+    class="absolute -top-10 left-1/2 -translate-x-1/2 
+       bg-gray-900 text-white text-xs px-3 py-1 
+       rounded-md shadow-lg transition-opacity duration-200"
+
+  >
+    Copied!
+  </span>
+
+</div>
+
+  <!-- Upload Button -->
+  <button
+    type="button"
+    [disabled]="!isEditMode"
+    (click)="resumeupload.click()"
+    class="flex items-center gap-2 px-5 py-3 rounded-xl 
+           bg-gray-50 dark:bg-gray-800/50 
+           hover:bg-gray-100 dark:hover:bg-gray-700 
+           transition-colors text-[13px] font-bold 
+           border border-dashed border-gray-300 
+           dark:border-gray-600 text-gray-500
+           disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    <span class="material-symbols-outlined text-[18px]">
+      upload
+    </span>
+    <span>{{resumeFileName? 'Update CV' : 'Upload CV'}}</span>
+  </button>
+
+
+<input
+ [disabled]="!isEditMode"
+  #resumeupload
+  hidden
+  type="file"
+  accept="application/pdf"
+  (change)="onResumeSelect($event)"
+/>
+
+
+
+<!-- <p *ngIf="resumeFileName">
+  Selected: {{ resumeFileName }}
+</p> -->
+
+</div>
+</div>
+</section>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-12">
+<div class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-raised hover:border-primary/30 transition-all group">
+<div class="size-8 rounded-full bg-gray-900 flex items-center justify-center text-white flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</div>
+<div class="flex-1 min-w-0">
+<label class="block text-[9px] font-extrabold uppercase tracking-widest text-gray-400">GitHub</label>
+<input class="w-full bg-transparent border-none p-0 text-xs font-bold ghost-input" placeholder="github.com/username"  [disabled]="!isEditMode" name="github" [(ngModel)]="github" type="text" value="github.com/arivera"/>
+</div>
+</div>
+<div class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-raised hover:border-primary/30 transition-all group">
+<div class="size-8 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+</div>
+<div class="flex-1 min-w-0">
+<label class="block text-[9px] font-extrabold uppercase tracking-widest text-gray-400">Email</label>
+<input class="w-full bg-transparent border-none p-0 text-xs font-bold ghost-input" placeholder="name@email.com"  [disabled]="!isEditMode" name="email" [(ngModel)]="email" type="text" value="alex@rivera.dev"/>
+</div>
+</div>
+<div class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-raised hover:border-primary/30 transition-all group">
+<div class="size-8 rounded-full bg-blue-600 flex items-center justify-center text-white flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</div>
+<div class="flex-1 min-w-0">
+<label class="block text-[9px] font-extrabold uppercase tracking-widest text-gray-400">LinkedIn</label>
+<input class="w-full bg-transparent border-none p-0 text-xs font-bold ghost-input" placeholder="linkedin.com/in/user"  [disabled]="!isEditMode" name="linkedin" [(ngModel)]="linkedin" type="text" value="linkedin.com/in/arivera"/>
+</div>
+</div>
+<div class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-raised hover:border-primary/30 transition-all group">
+<div class="size-8 rounded-full bg-orange-500 flex items-center justify-center text-white flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">language</span>
+</div>
+<div class="flex-1 min-w-0">
+<label class="block text-[9px] font-extrabold uppercase tracking-widest text-gray-400">Website</label>
+<input class="w-full bg-transparent border-none p-0 text-xs font-bold ghost-input" placeholder="your-site.com"  [disabled]="!isEditMode" name="website" [(ngModel)]="website" type="text" value="alexrivera.dev"/>
+</div>
+</div>
+<div class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-raised hover:border-primary/30 transition-all group">
+<div class="size-8 rounded-full bg-green-500 flex items-center justify-center text-white flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</div>
+<div class="flex-1 min-w-0">
+<label class="block text-[9px] font-extrabold uppercase tracking-widest text-gray-400">Phone</label>
+<input class="w-full bg-transparent border-none p-0 text-xs font-bold ghost-input" placeholder="+1 (555) 000-0000"  [disabled]="!isEditMode" name="phone" [(ngModel)]="phone" type="text" value="+1 (415) 555-0123"/>
+</div>
+</div>
+</div>
+
+
+<!-- Form -->
+
+
+<section class="flex flex-col gap-8 mb-20">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<h3 class="text-[15px] font-extrabold uppercase tracking-widest text-gray-400">About Me</h3>
+<div class="h-px w-20 bg-gray-100 dark:bg-gray-800 ml-4"></div>
+</div>
+<div class="flex items-center gap-2 text-[11px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>AI Optimization Active</span>
+</div>
+</div>
+<div class="w-full rounded-[2rem] bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 focus-within:ring-4 focus-within:ring-primary/5 shadow-raised transition-all overflow-hidden">
+<div class="bg-gray-50/50 dark:bg-gray-900/50 px-8 py-3 flex items-center gap-1.5 border-b border-gray-100 dark:border-gray-700">
+<button class="p-2 hover:bg-white dark:hover:bg-gray-800 rounded-lg text-gray-500 transition-colors"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
+<button class="p-2 hover:bg-white dark:hover:bg-gray-800 rounded-lg text-gray-500 transition-colors"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
+<button class="p-2 hover:bg-white dark:hover:bg-gray-800 rounded-lg text-gray-500 transition-colors"><span class="material-symbols-outlined text-[20px]">format_list_bulleted</span></button>
+<div class="w-px h-4 bg-gray-200 dark:bg-gray-700 mx-1"></div>
+<button class="p-2 hover:bg-white dark:hover:bg-gray-800 rounded-lg text-gray-500 transition-colors"><span class="material-symbols-outlined text-[20px]">link</span></button>
+</div>
+<div class="p-8">
+<textarea  [disabled]="!isEditMode" class="w-full min-h-[350px] bg-transparent border-none p-0 resize-none text-[16px] leading-[1.8] font-medium text-gray-700 dark:text-gray-300 ghost-input placeholder-gray-400 focus:ring-0" name="bio" [(ngModel)]="bio" placeholder="Start writing your professional story...">I'm a Full-Stack Engineer who specializes in building scalable architectural systems and delightful user experiences. 
+Over the past decade, I've worked with everything from early-stage startups to Fortune 500 companies. My philosophy is simple: write clean code, mentor others, and never stop learning.
+Currently focusing on:
+- Distributed systems with Go
+- Modern frontend patterns with React &amp; Server Components
+- Cloud-native infrastructure automation</textarea>
+</div>
+<div class="bg-gray-50/50 dark:bg-gray-900/50 border-t border-gray-100 dark:border-gray-700 px-8 py-4 flex justify-between items-center">
+<span class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">342 Words</span>
+<div class="flex items-center gap-6">
+<button class="text-[11px] font-extrabold text-primary hover:text-primary/80 uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">magic_button</span>
+                                Rewrite with AI
+                            </button>
+<button class="text-[11px] font-extrabold text-gray-400 hover:text-gray-600 uppercase tracking-wider">Clear all</button>
+</div>
+</div>
+</div>
+</section>
+<div *ngIf="!profileExists" class="fixed bottom-8 right-8 z-50">
+  <button 
+    (click)="saveProfile()"
+    class="flex items-center gap-3 px-6 py-4 rounded-full
+           bg-primary text-white font-bold
+           shadow-xl hover:scale-105 transition-all">
+    <span class="material-symbols-outlined">save</span>
+    Save Profile
+  </button>
+</div>
+
+<div *ngIf="profileExists && isEditMode" class="fixed bottom-8 right-8 z-50">
+  <button 
+    (click)="saveProfile()"
+    class="flex items-center gap-3 px-6 py-4 rounded-full
+           bg-primary text-white font-bold
+           shadow-xl hover:scale-105 transition-all">
+    <span class="material-symbols-outlined">save</span>
+    Save Changes
+  </button>
+</div>
+
+</form>
+</main>
+</div>
+</div>
+<div class="fixed bottom-8 right-8 md:hidden z-50">
+<button class="size-16 rounded-full bg-primary text-white shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]">save</span>
+</button>
+</div>
+
+</body></html>
+
+<!-- ------------------------------------------------------ -->
+
+
+
+
+
+
+

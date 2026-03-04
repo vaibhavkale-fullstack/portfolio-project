@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Dashboard Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17cfcb",
+                        "background-light": "#f9fafa",
+                        "background-dark": "#1a1a1e",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .tactile-card {
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .dark .tactile-card {
+            background: #242428;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .tactile-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#111818] dark:text-gray-100">
+<div class="flex min-h-screen">
+<aside class="w-64 fixed h-full border-r border-[#f0f4f4] dark:border-gray-800 bg-white dark:bg-[#1a1a1e] z-50">
+<div class="flex h-full flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary size-8 rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined !text-xl">terminal</span>
+</div>
+<h1 class="text-[#111818] dark:text-white text-lg font-bold tracking-tight">DevStack</h1>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-bold" href="/dashboard">
+<span class="material-symbols-outlined fill-1">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#638887] dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="/profile">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#638887] dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="/experience">
+<span class="material-symbols-outlined">work</span>
+<span class="text-sm">Experience</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#638887] dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="/education">
+<span class="material-symbols-outlined">school</span>
+<span class="text-sm">Education</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#638887] dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="/skills">
+<span class="material-symbols-outlined">layers</span>
+<span class="text-sm">Tech Stack</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#638887] dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="/project">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-sm">Projects</span>
+</a>
+<a routerLink="/portfolio-preview" class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#638887] dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined">preview</span>
+<span class="text-sm">Portfolio Preview</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<div class="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50">
+<p class="text-xs font-bold text-[#638887] uppercase tracking-widest mb-2">Profile Strength</p>
+<div class="h-1.5 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%] rounded-full"></div>
+</div>
+<p class="text-xs mt-2 text-[#111818] dark:text-gray-300 font-medium">85% Complete</p>
+</div>
+<button (click)="sharePortfolio()" class="flex w-full items-center justify-center gap-2 rounded-xl h-12 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+<span class="material-symbols-outlined !text-lg">share</span>
+<span>Share Portfolio</span>
+</button>
+</div>
+</div>
+</aside>
+<main class="flex-1 ml-64">
+<header class="h-20 flex items-center justify-between px-10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-40 border-b border-[#f0f4f4] dark:border-gray-800">
+<div class="flex items-center gap-6">
+<h2 class="text-xl font-bold tracking-tight">Overview</h2>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="pl-10 pr-4 py-2 w-80 bg-[#f0f4f4] dark:bg-gray-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-gray-500" placeholder="Search projects or messages..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2 mr-4 border-r border-[#f0f4f4] dark:border-gray-800 pr-4">
+<!-- <button class="p-2.5 rounded-xl bg-[#f0f4f4] dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative">
+<span class="material-symbols-outlined !text-[20px]">notifications</span>
+<span class="absolute top-2 right-2.5 size-2 bg-red-500 rounded-full border-2 border-white dark:border-gray-800"></span>
+</button> -->
+<button
+  (click)="openMessages()"
+  class="p-2.5 rounded-xl bg-[#f0f4f4] dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative">
+
+  <span class="material-symbols-outlined !text-[20px]">chat_bubble</span>
+
+  <!-- Optional unread dot -->
+  <span *ngIf="unreadMessages > 0"
+        class="absolute top-2 right-2 size-2 bg-orange-500 rounded-full">
+  </span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-bold">{{full_name}}</p>
+<p class="text-[11px] font-medium text-[#638887]">{{role}}</p>
+</div>
+<!-- <div class="size-10 rounded-full bg-cover bg-center ring-2 ring-primary/20" data-alt="Developer profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBztwJ6jLJ_1Pz9I9uPtJasfOEh93yW9jBRbNJsp-AISl-5iAQlhczOuvYgwvOPJiOpvQgsl_iv14B6JIceMLLaThLdOL6RU_UD9A0INmp8_MDQdFD53HKNm_xbtxON4lRi4M_sz8qK6DJc0S6TtC0QErOso68s_ggyfbaCHGOQFU7RFi5-HNaxd9cHJJyFhyckU0eApUnCmW0QANFxuFoUrqJcEhcFWQ0bYQls05jy30fLHS5hqVkW-JhEv-v8eNgWEh1CF-PyldOI')"></div> -->
+<img 
+  [src]="imageUrl" 
+  alt="Profile Image" 
+  class="w-10 h-10 rounded-full object-cover"
+  width="40"
+  height="40"></div>
+</div>
+</header>
+<div class="p-10 max-w-7xl mx-auto">
+<div class="flex items-end justify-between mb-10">
+<div>
+<h3 class="text-4xl font-extrabold tracking-tight mb-2">{{message}}, {{full_name}}</h3>
+<p class="text-[#638887] text-lg">Your portfolio has seen a {{percentageIncrease}}%  {{ percentageIncrease > 0 ? 'increase' : 'decrease' }} in recruiter engagement this week.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 h-12 rounded-xl bg-white dark:bg-gray-800 border border-[#dce5e5] dark:border-gray-700 text-sm font-bold flex items-center gap-2 hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined !text-lg">visibility</span>
+                        Preview
+                    </button>
+<button class="px-6 h-12 rounded-xl bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                        Publish Update
+                    </button>
+                    <button class="px-6 h-12 rounded-xl bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all"(click)="logout()">
+                        Logout
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+<div class="tactile-card rounded-2xl p-6 flex flex-col justify-between h-48">
+<div class="flex justify-between items-start">
+<div class="size-12 rounded-xl bg-green-50 dark:bg-green-900/20 text-green-600 flex items-center justify-center">
+<span class="material-symbols-outlined !text-2xl">fiber_manual_record</span>
+</div>
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div>
+<p class="text-sm font-bold text-[#638887] uppercase tracking-wider mb-1">Availability</p>
+<p class="text-2xl font-black text-[#111818] dark:text-white">Active for Hire</p>
+</div>
+</div>
+<div class="tactile-card relative group rounded-2xl p-6 flex flex-col justify-between h-48 border-b-4 border-primary/40">
+
+  <div class="flex justify-between items-center">
+    <div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+      <span class="material-symbols-outlined !text-2xl">verified</span>
+    </div>
+    <span class="text-primary font-black text-xl">{{profileStrength}}%</span>
+  </div>
+
+  <div>
+    <p class="text-sm font-bold text-[#638887] uppercase tracking-wider mb-1">Strength</p>
+
+    <div class="w-full bg-gray-100 dark:bg-gray-800 h-2 rounded-full mb-2">
+      <div 
+        class="bg-primary h-full rounded-full transition-all duration-500"
+        [style.width.%]="profileStrength">
+      </div>
+    </div>
+
+    <!-- ✅ Show Popup ONLY if strength < 100 -->
+    <div 
+      *ngIf="profileStrength < 100"
+      class="absolute top-full left-0 mt-2 w-64 bg-white shadow-xl rounded-lg p-4 opacity-0 group-hover:opacity-100 transition duration-300 z-50">
+
+      <h4 class="font-semibold mb-2">Complete these:</h4>
+
+      <div *ngFor="let item of missingSections"
+           class="text-sm text-red-500 cursor-pointer hover:underline"
+           (click)="navigateTo(item.key)">
+        • {{ item.label }}
+      </div>
+
+    </div>
+
+    <!-- ✅ Different message when 100% -->
+    <p class="text-xs text-[#111818] dark:text-gray-300 font-medium">
+      <span *ngIf="profileStrength < 100">
+        {{indicator}} to reach 100%
+      </span>
+      <span *ngIf="profileStrength === 100">
+        🎉 Profile Completed
+      </span>
+    </p>
+
+  </div>
+
+</div>
+<div class="tactile-card rounded-2xl p-6 flex flex-col justify-between h-48">
+<div class="size-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined !text-2xl">bar_chart</span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+
+  <p class="text-3xl font-black">
+    {{ totalViews | number }}
+  </p>
+
+  <span 
+    class="text-sm font-bold"
+    [ngClass]="{
+      'text-green-600': percentageIncrease > 0,
+      'text-red-600': percentageIncrease < 0,
+      'text-gray-500': percentageIncrease === 0
+    }">
+
+    {{ percentageIncrease > 0 ? '+' : '' }}
+    {{ percentageIncrease }}%
+
+  </span>
+
+</div>
+<p class="text-sm font-bold text-[#638887] uppercase tracking-wider">Profile Views</p>
+</div>
+</div>
+
+<div 
+class="tactile-card rounded-2xl p-6 flex flex-col justify-between h-48 cursor-pointer"
+(click)="openMessages()">
+<div class="size-12 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-orange-600 flex items-center justify-center">
+<span class="material-symbols-outlined !text-2xl">mail</span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<p class="text-3xl font-black"> {{ totalMessages }}</p>
+<span *ngIf="unreadMessages > 0" class="size-2 bg-orange-500 rounded-full animate-pulse"></span>
+</div>
+<p class="text-sm font-bold text-[#638887] uppercase tracking-wider">Recruiter Messages</p>
+</div>
+</div>
+
+<!-- Message Modal -->
+<div *ngIf="showMessageModal"
+     class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+
+  <div class="bg-white dark:bg-[#242428] w-[700px] rounded-2xl p-6">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-lg font-bold">Recruiter Messages</h3>
+      <button (click)="showMessageModal=false">✕</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-6 border-b pb-2 mb-4">
+      <button (click)="selectedTab='unread'"
+              [class.font-bold]="selectedTab==='unread'">
+        Unread ({{ unreadMessages }})
+      </button>
+
+      <button (click)="selectedTab='read'"
+              [class.font-bold]="selectedTab==='read'">
+        Read
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div class="max-h-80 overflow-y-auto space-y-3">
+
+      <!-- Unread -->
+      <div *ngIf="selectedTab==='unread'">
+  <div *ngFor="let msg of unreadList"
+       (click)="markAsRead(msg)"
+       class="p-3 rounded-lg bg-orange-50 dark:bg-orange-900/20 cursor-pointer hover:scale-[1.02] transition">
+
+    <p class="font-bold">{{ msg.sender_name }}</p>
+    <p class="text-sm">{{ msg.message }}</p>
+
+  </div>
+</div>
+
+      <!-- Read -->
+      <div *ngIf="selectedTab==='read'">
+  <div *ngFor="let msg of readList"
+       class="p-3 rounded-lg bg-gray-100 dark:bg-gray-800">
+
+    <p class="font-bold">{{ msg.sender_name }}</p>
+    <p class="text-sm">{{ msg.message }}</p>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+</div>
+<div class="grid grid-cols-12 gap-10">
+<div class="col-span-12 lg:col-span-12">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-xl font-bold tracking-tight">Active Projects</h4>
+<button type="button" class="text-sm font-bold text-primary hover:underline" (click)="toggleAll()"> {{ showAll ? 'Collapse' : 'View All' }}</button>
+</div>
+@for(project of displayedProjects; track project.id){
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-[#242428] border border-[#f0f4f4] dark:border-gray-800 hover:border-primary/30 transition-all group">
+<div class="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
+<div class="size-full bg-cover bg-center" data-alt="Project thumbnail"
+[style.background-image]="project.image_url 
+    ? 'url(http://localhost:3000/upload_images/' + project.image_url + ')'
+   : 'url(assets/images/default-project.png)'"></div>
+</div>
+
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+    
+<h5 class="text-base font-bold">{{project.title}}</h5>
+<span class="px-2 py-1 rounded-md bg-green-50 text-green-600 text-[11px] font-bold uppercase">{{project.status}}</span>
+</div>
+<p class="text-sm text-[#638887]">{{project.tech_stack}}</p>
+</div>
+
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
+<span class="material-symbols-outlined !text-28px">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
+<span class="material-symbols-outlined !text-28px">delete</span>
+</button>
+</div>
+ 
+
+<!-- <div class="text-right ml-6">
+<p class="text-xs font-bold text-[#111818] dark:text-white">432 Clicks</p>
+<p class="text-[10px] text-[#638887]">Updated 2d ago</p>
+</div> -->
+</div>
+
+
+<!-- <div class="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-[#242428] border border-[#f0f4f4] dark:border-gray-800 hover:border-primary/30 transition-all group">
+<div class="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
+<div class="size-full bg-cover bg-center" data-alt="Project thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDK3gYJW_vuLzPLVE__UIHM54AYLWB9g0ifs-8IqLkuxR13OQVVsI764pvkG6H8uzDraFyuubffQG871HA52Y2i9-frHK4adXAP5FUlAvz-8ITut5BxLYJRUKWPPeLcS1-AL3JjkeuXsA9BZNSxAJfl8-fplrGtTIoMASPNPalbPDrJ3ClRoHGWy3Za9ofnenQNXrL70Tx6O7aMsBJfYlqV7N8GEw0lR9DvyQv25bHatM1Xfj8TIKzpMCzntd0lPS8eEP3OMAvPuq2o')"></div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h5 class="text-base font-bold">Cloud-Native CRM Dashboard</h5>
+<span class="px-2 py-1 rounded-md bg-orange-50 text-orange-600 text-[11px] font-bold uppercase">Draft</span>
+</div>
+<p class="text-sm text-[#638887]">Next.js, Tailwind, AWS Lambda</p>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
+<span class="material-symbols-outlined !text-28px">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
+<span class="material-symbols-outlined !text-28px">delete</span>
+</button>
+</div> -->
+<!-- <div class="text-right ml-6">
+<p class="text-xs font-bold text-[#111818] dark:text-white">--</p>
+<p class="text-[10px] text-[#638887]">Last edited 5h ago</p>
+</div> -->
+<!-- </div> -->
+
+
+<!-- <div class="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-[#242428] border border-[#f0f4f4] dark:border-gray-800 hover:border-primary/30 transition-all group">
+<div class="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
+<div class="size-full bg-cover bg-center" data-alt="Project thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBaAEgzH3RZDcD8hEweVmFNNlpkBTzAXePV6M0YhC7364q08HjDEOAAfsE3Cs7AVMX3J8z1mNRisaU2S6EvxCNthWftPPYrvR9cXCc6w-nJ4URC46zuovnO2U9pgy7SLqRrL17Vfan9RsPa9-ZhtnAgqIY6HSBISk7yqNNDYE-2ntLG7j8qRhb8B9b0_0aFRMJZp4SOS1tUJIeEAd70e8d7nGgy8ufFS8FaUzVuNs_gBwucmoXhWVY8StB69BgSo6-fbv_nqXgl3N2Z')"></div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h5 class="text-base font-bold">Web3 Auth Provider</h5>
+<span class="px-2 py-1 rounded-md bg-green-50 text-green-600 text-[11px] font-bold uppercase">Live</span>
+</div>
+<p class="text-sm text-[#638887]">TypeScript, Solidity, Ethers.js</p>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
+<span class="material-symbols-outlined !text-28px">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
+<span class="material-symbols-outlined !text-28px">delete</span>
+</button>
+</div> -->
+
+<!-- <div class="text-right ml-6">
+<p class="text-xs font-bold text-[#111818] dark:text-white">189 Clicks</p>
+<p class="text-[10px] text-[#638887]">Updated 1w ago</p>
+</div> -->
+<!-- </div> -->
+
+</div>
+}
+</div>
+
+<!-- <div class="col-span-12 lg:col-span-4 space-y-10">
+<div>
+<h4 class="text-xl font-bold tracking-tight mb-6">Profile Improvements</h4>
+<div class="space-y-4">
+<div class="p-5 rounded-2xl bg-primary/5 dark:bg-primary/10 border border-primary/20">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<div>
+<p class="text-sm font-bold mb-1">Add a Video Introduction</p>
+<p class="text-xs text-[#638887] leading-relaxed">Profiles with video intros get 3x more recruiter responses.</p>
+<button class="mt-3 text-xs font-bold text-primary flex items-center gap-1">
+                                            Add now <span class="material-symbols-outlined !text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-5 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-gray-400">link</span>
+<div>
+<p class="text-sm font-bold mb-1">Verify GitHub Identity</p>
+<p class="text-xs text-[#638887] leading-relaxed">Connect your GitHub to display verified contribution stats.</p>
+<button class="mt-3 text-xs font-bold text-gray-600 dark:text-gray-300">Connect account</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-xl font-bold tracking-tight">Recent Views</h4>
+<span class="text-[10px] font-bold text-green-500 uppercase tracking-widest bg-green-500/10 px-2 py-0.5 rounded-md">Real-time</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+<span class="material-symbols-outlined !text-lg text-gray-400">apartment</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Stripe, Inc.</p>
+<p class="text-xs text-[#638887]">Engineering Manager viewed Profile</p>
+</div>
+<span class="text-[10px] text-[#638887]">2h ago</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+<span class="material-symbols-outlined !text-lg text-gray-400">apartment</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Vercel</p>
+<p class="text-xs text-[#638887]">Recruiter viewed 'Cloud-Native CRM'</p>
+</div>
+<span class="text-[10px] text-[#638887]">5h ago</span>
+</div>
+<div class="flex items-center gap-3 opacity-50">
+<div class="size-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+<span class="material-symbols-outlined !text-lg text-gray-400">account_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Anonymous</p>
+<p class="text-xs text-[#638887]">Direct search view</p>
+</div>
+<span class="text-[10px] text-[#638887]">Yesterday</span>
+</div>
+</div>
+</div>
+</div> -->
+
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Work Experience Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17cfcb",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#112121",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav {
+            background-color: #e7f3f3;
+            border-right: 4px solid #17cfcb;
+            color: #17cfcb;
+        }
+        .active-nav .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0e1b1b] dark:text-white min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-72 bg-white dark:bg-[#1a2e2e] border-r border-[#d0e7e6] dark:border-gray-800 flex flex-col justify-between p-6 shrink-0">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 mb-10">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">architecture</span>
+</div>
+<h2 class="text-lg font-extrabold tracking-tight">Studio<span class="text-primary">.</span></h2>
+</div>
+<nav class="space-y-1.5">
+<p class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3 px-4">Menu</p>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-[#e7f3f3] dark:hover:bg-primary/10 transition-colors group" href="/dashboard">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-[#e7f3f3] dark:hover:bg-primary/10 transition-colors group" href="/profile">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">person</span>
+<span class="text-sm font-semibold">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg active-nav group" href="/profile">
+<span class="material-symbols-outlined">work</span>
+<span class="text-sm font-bold">Experience</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-[#e7f3f3] dark:hover:bg-primary/10 transition-colors group" href="/education">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">school</span>
+<span class="text-sm font-semibold">Education</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-[#e7f3f3] dark:hover:bg-primary/10 transition-colors group" href="/skills">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">stack</span>
+<span class="text-sm font-semibold">Tech Stack</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#638887] dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="/project">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-sm">Projects</span>
+</a>
+<div class="my-4 border-t border-[#d0e7e6] dark:border-gray-800"></div>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-[#e7f3f3] dark:hover:bg-primary/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">settings</span>
+<span class="text-sm font-semibold">Account Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-3">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl h-11 bg-primary text-[#0e1b1b] text-sm font-bold transition-transform hover:scale-[1.02]">
+<span class="material-symbols-outlined text-lg">visibility</span>
+<span>Portfolio Preview</span>
+</button>
+</div>
+</aside>
+
+<main class="flex-1 flex flex-col overflow-y-auto">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-8 py-6">
+<div class="max-w-5xl mx-auto flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-black tracking-tight text-[#0e1b1b] dark:text-white leading-none">Experience Manager</h2>
+<p class="text-[#4e9796] text-sm">Organize your professional career milestones for your portfolio.</p>
+</div>
+<button type="button" (click)="onAddExperience()" 
+class="flex items-center gap-2 px-6 py-2.5 bg-primary/10 dark:bg-primary/20 text-[#0e1b1b] dark:text-primary text-sm font-bold rounded-xl border border-primary/20 hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Add Position</span>
+</button>
+</div>
+</header>
+
+<!-- FORM -->
+<!-- *ngIf = "isFormOpen" -->
+ <!-- *ngIf = "!(isFormOpen && experienceExist)" -->
+<form  [formGroup]="experience" (ngSubmit)="Submit()">
+<div class="px-8 pb-12 max-w-5xl mx-auto w-full flex flex-col gap-6">
+<div *ngIf = "isFormOpen" class="bg-white dark:bg-[#1a2e2e] rounded-2xl shadow-sm border border-[#d0e7e6] dark:border-gray-800 p-6 flex flex-col gap-6 relative">
+<div class="absolute left-2 top-1/2 -translate-y-1/2 cursor-grab active:cursor-grabbing text-gray-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-3xl">drag_indicator</span>
+</div>
+<div class="pl-6 flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-bold text-[#0e1b1b] dark:text-gray-200">Company Name</span>
+<input class="w-full rounded-xl border-[#d0e7e6] dark:border-gray-700 bg-background-light dark:bg-background-dark p-3 focus:ring-primary focus:border-primary transition-all text-sm" placeholder="e.g. Google" type="text" formControlName="company_name"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-bold text-[#0e1b1b] dark:text-gray-200">Role</span>
+<input class="w-full rounded-xl border-[#d0e7e6] dark:border-gray-700 bg-background-light dark:bg-background-dark p-3 focus:ring-primary focus:border-primary transition-all text-sm" placeholder="e.g. Lead Engineer" type="text" formControlName="role"/>
+</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-bold text-[#0e1b1b] dark:text-gray-200">Employment Type</span>
+<select formControlName="employment_type" class="w-full rounded-xl border-[#d0e7e6] dark:border-gray-700 bg-background-light dark:bg-background-dark p-3 focus:ring-primary focus:border-primary text-sm">
+ 
+<option value="" disabled selected>Select employment type</option>
+<option>Full-time</option>
+<option>Freelance</option>
+<option>Contract</option>
+<option>Part-time</option>
+<option>Internship</option>
+<option>Self-employed</option>
+<option>Trainee</option>
+</select>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-bold text-[#0e1b1b] dark:text-gray-200">Location</span>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">location_on</span>
+<input class="w-full pl-10 rounded-xl border-[#d0e7e6] dark:border-gray-700 bg-background-light dark:bg-background-dark p-3 focus:ring-primary focus:border-primary transition-all text-sm" type="text" formControlName="location"/>
+</div>
+</label>
+<div class="flex flex-col gap-2 justify-end pb-1">
+<div class="flex items-center justify-between p-3 rounded-xl border border-[#d0e7e6] dark:border-gray-700 bg-background-light dark:bg-background-dark">
+<span class="text-sm font-medium">Currently Work Here</span>
+<label class="relative flex h-[24px] w-[44px] cursor-pointer items-center rounded-full border-none bg-gray-300 has-[:checked]:bg-primary transition-colors">
+<input checked="" class="sr-only peer" type="checkbox" formControlName="currentlyWorking"/>
+<div class="w-full h-full rounded-full transition-all peer-checked:bg-primary"></div>
+<div class="absolute left-1 h-4 w-4 rounded-full bg-white transition-all peer-checked:left-6 shadow-sm"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-bold text-[#0e1b1b] dark:text-gray-200">Start Date</span>
+<input  #startDatePicker
+    (click)="startDatePicker.showPicker()" class="w-full rounded-xl border-[#d0e7e6] dark:border-gray-700 bg-background-light dark:bg-background-dark p-3 focus:ring-primary text-sm" type="month" formControlName="start_date"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-bold text-[#0e1b1b] dark:text-gray-200">End Date</span>
+<input  #endDatePicker
+    (click)="endDatePicker.showPicker()" 
+    class="w-full rounded-xl border-[#d0e7e6] dark:border-gray-700 bg-background-light dark:bg-background-dark p-3 focus:ring-primary text-sm disabled:opacity-50 disabled:cursor-not-allowed" type="month" formControlName="end_date"/>
+</label>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-sm font-bold text-[#0e1b1b] dark:text-gray-200">Job Description</span>
+<div class="rounded-xl border border-[#d0e7e6] dark:border-gray-700 overflow-hidden">
+<div class="bg-[#f0f7f7] dark:bg-gray-800 p-2 border-b border-[#d0e7e6] dark:border-gray-700 flex gap-2">
+<button class="p-1 hover:bg-white dark:hover:bg-gray-700 rounded transition-colors"><span class="material-symbols-outlined text-sm">format_bold</span></button>
+<button class="p-1 hover:bg-white dark:hover:bg-gray-700 rounded transition-colors"><span class="material-symbols-outlined text-sm">format_italic</span></button>
+<button class="p-1 hover:bg-white dark:hover:bg-gray-700 rounded transition-colors"><span class="material-symbols-outlined text-sm">format_list_bulleted</span></button>
+<button class="p-1 hover:bg-white dark:hover:bg-gray-700 rounded transition-colors"><span class="material-symbols-outlined text-sm">link</span></button>
+</div>
+<textarea class="w-full p-4 bg-background-light dark:bg-background-dark border-none focus:ring-0 text-sm leading-relaxed" formControlName="description" placeholder="Describe your key achievements and responsibilities..." rows="4">- Led development of a microservices architecture using Node.js and Docker.
+- Improved application performance by 40% through query optimization.
+- Mentored a team of 5 junior developers.</textarea>
+</div>
+</div>
+
+<!------------------------------------------- Tech Array Loop ---------------------------------------------------->
+
+<div class="flex flex-col gap-3">
+<span class="text-sm font-bold text-[#0e1b1b] dark:text-gray-200">Tech Stack Used</span>
+
+<div formArrayName="techArray" class="flex flex-wrap gap-2 p-6 rounded-xl border border-[#d0e7e6] dark:border-gray-700 bg-background-light dark:bg-background-dark">
+
+  @for (control of techStackArray.controls; let i = $index; track control;) {
+    <div
+      class="flex items-center gap-1 px-3 py-1 bg-primary/20 text-primary
+             border border-primary/30 rounded-full text-xs font-bold">
+      <input
+        type="text"
+        class="bg-transparent border-none focus:ring-0 text-xs
+               w-auto min-w-[60px] max-w-[100px] outline-none"
+        [formControlName]= "i"
+      />
+
+      <button
+        type="button"
+        (click)="techStackArray.removeAt(i)"
+        class="material-symbols-outlined text-xs hover:text-red-500"
+      >
+        close
+      </button>
+    </div>
+  }
+
+  <!-- Add new tech -->
+  <input
+  #techInput
+    type="text"
+    placeholder="Add tech..."
+    class="bg-transparent border-none focus: ring-0 text-xs flex-1 min-w-[100px]"
+    (keydown)="onTechKeydown($event, techInput)"
+  />
+</div>
+</div>
+
+
+<div class="flex justify-between items-center pt-4 border-t border-[#d0e7e6] dark:border-gray-800">
+<button type="button"
+  [disabled]="experience.invalid" 
+  (click)="deleteExperience(selectedExperienceId)"
+  class="flex items-center gap-1 text-red-500 hover:text-red-600 text-sm font-bold px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+  <span class="material-symbols-outlined text-sm">delete</span>
+  Delete Position
+</button>
+
+
+<div class="flex gap-3">
+<button type="button" (click)="closeForm()"
+class="px-6 py-2 text-sm font-bold text-[#4e9796] hover:text-[#0e1b1b] transition-colors">Cancel</button>
+
+<button class="px-8 py-2 bg-primary text-[#0e1b1b] text-sm font-bold rounded-xl shadow-md hover:shadow-lg transition-all"
+type="submit"> 
+
+{{ experienceExist ? 'Update Changes' : 'Save Experience' }}</button>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- ---------------------------ALL Experience Loop------------------------------------------------------------- -->
+
+<!-- [] means values are dynamic -->
+
+<!-- cdkDropList:- Angular doesn’t know where items can land -->
+<!-- [cdkDropListData]="Allexperiences" 
+
+ “The data behind this list is Allexperiences” 
+  Angular uses this to: Know which array to reorder, 
+  Track index changes -->
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+ 
+  <!-- (cdkDropListDropped)="drop($event)"
+
+This means:
+“When user finishes dragging and drops an item → call drop()”
+$event contains drag info -->
+
+<div
+  cdkDropList
+  [cdkDropListData]="Allexperiences"    
+  (cdkDropListDropped)="drop($event)"
+  class="flex flex-col gap-4">
+
+@for (exp of Allexperiences; track exp.id) {
+
+<div
+  cdkDrag
+  class="bg-white dark:bg-[#1a2e2e] rounded-2xl shadow-sm
+         border border-[#d0e7e6] dark:border-gray-800
+         p-4 flex items-center gap-4 relative group">
+
+<div
+  cdkDragHandle
+  class="cursor-grab text-gray-200 group-hover:text-primary transition-colors">
+
+<span class="material-symbols-outlined">drag_indicator</span>
+</div>
+    
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-14 border border-[#d0e7e6] dark:border-gray-700 shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBiO5Ypk4p7w4BWS7mWhH5u-d4uRmwGO5oDOsxGsYdcAuUmbX6SAPNnbbPx5xz2fyVo1rc5bwT8y7YHDnJc6D8jlWVdXoyc24DAxGvMU0nCwWpihBD1VGMHiBosLAQz4YYfUINZLNdE-6-2T3CVB7TqRYYl7J03V3wEeSZNrCKmXuP8lwvZZoz0azbgefJoes4cNM7EXTDmVyZCl_xGygl8n-UnhPo-J5RHsN4bhiP43iCJM0uPolXlDSrfRDJhLWbYwvMh5HbemXGM");'></div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center gap-2">
+
+<h3 class="text-base font-bold text-[#0e1b1b] dark:text-white leading-tight">{{exp.role}}</h3>
+<span class="text-[10px] font-bold px-2 py-0.5 bg-[#e7f3f3] dark:bg-gray-800 text-[#4e9796] rounded uppercase">{{exp.employment_type}}</span>
+</div>
+<p class="text-sm text-[#4e9796]">{{ exp.company_name }} •
+  {{ exp.start_date | date:'MMM yyyy' }} –
+  {{ exp.end_date ? (exp.end_date | date:'MMM yyyy') : 'Present' }}
+</p>
+</div>
+<div class="flex items-center gap-3">
+<button type="button" (click)="editExperience(exp)" class="p-2 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button type="button" (click)="deleteExperience(exp)" class="p-2 text-gray-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+}  
+</div>
+
+<div class="mt-4 p-5 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-[#0e1b1b] dark:text-white text-base font-bold">Auto-save is enabled</p>
+<p class="text-[#4e9796] text-sm">Your work experience is automatically synced to your public developer profile.</p>
+</div>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Everything is up to date</span>
+</div>
+</div>
+</div>
+</form>
+</main>
+</div>
+
+</body></html>
