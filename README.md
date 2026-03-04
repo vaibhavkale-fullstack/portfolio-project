@@ -76,3 +76,18 @@ ng serve
 
 Vaibhav Kale  
 Fullstack Developer (Angular + Node.js)
+
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](screenshots/home.png)
+
+### 📊 Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### 🔐 Profile Page
+![Profile](screenshots/profile.png)
+
+### 📁 Projects Section
+![Project](screenshots/project.png)
